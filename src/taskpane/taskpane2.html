@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="importTM.css" rel="stylesheet" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="importTM.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <label for="satellite">Satellite:</label>
+      <select id="satellite">
+        <option value="">Select Satellite</option>
+        <option value="satellite1">Satellite 1</option>
+        <option value="satellite2">Satellite 2</option>
+        <option value="satellite3">Satellite 3</option>
+      </select>
+      <br />
+
+      <label for="paramSelect">Param. Select:</label>
+      <input type="text" id="paramSelect" placeholder="Enter Parameter" />
+      <br />
+
+      <label for="parameters">Parameters:</label>
+      <textarea id="parameters" rows="10" cols="30" placeholder="Parameters"></textarea>
+      <div class="button-group">
+        <button><</button>
+        <button>></button>
+        <button>>></button>
+      </div>
+      <textarea id="parameters2" rows="10" cols="30" placeholder="Selected Parameters"></textarea>
+      <br />
+
+      <label for="level">Level:</label>
+      <select id="level">
+        <option value="">Select Level</option>
+        <option value="level1">Level 1</option>
+        <option value="level2">Level 2</option>
+        <option value="level3">Level 3</option>
+      </select>
+      <br />
+
+      <label for="start">Start:</label>
+      <input type="datetime-local" id="start" value="2023-05-23T00:00:00" />
+      <input type="checkbox" id="showHeader" />
+      <label for="showHeader">Show Header</label>
+      <br />
+
+      <label for="end">End:</label>
+      <input type="datetime-local" id="end" value="2023-05-23T00:00:00" />
+    </div>
+  </body>
+</html>

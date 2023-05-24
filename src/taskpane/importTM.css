@@ -1,0 +1,33 @@
+.container {
+  margin: 20px;
+}
+body {
+  width: 30240px;
+}
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+select,
+input[type="text"],
+textarea {
+  margin-bottom: 10px;
+}
+
+.button-group {
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 10px;
+}
+
+button {
+  display: block;
+  width: 40px;
+  height: 40px;
+  margin-bottom: 5px;
+}
+
+textarea {
+  resize: none;
+}
