@@ -1,0 +1,22 @@
+#myDiv {
+  border: 1px solid #ccc;
+  padding: 5px;
+  font-family: Arial, sans-serif;
+  user-select: text;
+  height: 10em;
+  overflow-y: scroll;
+}
+
+#myDiv table {
+  border-collapse: collapse;
+}
+
+#myDiv td {
+  padding: 5px;
+  width: 100%;
+  cursor: pointer;
+}
+
+#myDiv td.selected {
+  background-color: lightblue;
+}

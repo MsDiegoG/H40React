@@ -1,33 +1,79 @@
 .container {
-  margin: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
 }
-body {
-  width: 30240px;
+
+.ms-welcome__header {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f4f4f4; /* Cambiar color de fondo */
 }
+
+.ms-welcome__header img {
+  width: 220px;
+  height: 127px;
+}
+
+.ms-font-su {
+  font-size: 32px;
+  margin-top: 10px;
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-weight: bold; /* Cambiar el peso de la fuente */
+}
+
 label {
   display: block;
-  margin-bottom: 5px;
+  margin-top: 10px;
 }
 
-select,
 input[type="text"],
-textarea {
-  margin-bottom: 10px;
+select,
+input[type="datetime-local"],
+input[type="checkbox"] {
+  width: 100%;
+  padding: 5px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
-.button-group {
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.checkbox-container label {
   display: inline-block;
-  vertical-align: top;
-  margin-right: 10px;
 }
 
-button {
-  display: block;
-  width: 40px;
-  height: 40px;
-  margin-bottom: 5px;
+@media (min-width: 768px) {
+  .container {
+    max-width: 800px;
+  }
+}
+#myDiv {
+  border: 1px solid #ccc;
+  padding: 5px;
+  font-family: Arial, sans-serif;
+  user-select: text;
+  height: 10em;
+  overflow-y: scroll;
 }
 
-textarea {
-  resize: none;
+#myDiv table {
+  border-collapse: collapse;
+}
+
+#myDiv td {
+  padding: 5px;
+  width: 100%;
+  cursor: pointer;
+}
+
+#myDiv td.selected {
+  background-color: lightblue;
 }

@@ -5,7 +5,7 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 const urlDev = "http://localhost:3000/";
-// const urlProd = "http://localhost:3000/";
+const urlProd = "http://localhost:3000/";
 
 async function getHttpsOptions() {
   const httpsOptions = await devCerts.getHttpsServerOptions();
@@ -58,7 +58,7 @@ module.exports = async (env, options) => {
       new HtmlWebpackPlugin({
         filename: "config.html",
         template: "./src/taskpane/config.html",
-        chunks: ["taskpane"],
+        chunks: ["polyfill", "taskpane", "commands"],
       }),
       new HtmlWebpackPlugin({
         filename: "taskpane2.html",
@@ -84,11 +84,6 @@ module.exports = async (env, options) => {
             },
           },
         ],
-      }),
-      new HtmlWebpackPlugin({
-        filename: "commands.html",
-        template: "./src/commands/commands.html",
-        chunks: ["polyfill", "commands"],
       }),
     ],
     devServer: {

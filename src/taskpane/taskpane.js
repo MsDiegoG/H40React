@@ -1,4 +1,4 @@
-import { ReadInfo } from './modules/H4OInfo.js';
+import { ReadInfo, Enab } from './modules/H4OInfo.js';
 import { showErrorDialog } from './modules/H4O.js';
 
 
@@ -48,17 +48,24 @@ const cmdConnect = (host, port) => {
     return;
 
   } else {
+
+
     ReadInfo(txtHost.value.trim(), txtPort.value.trim());
   }
 
 }
-Office.onReady((info) => {
-  if (info.host === Office.HostType.Excel) {
+Office.onReady().then(function () {
+  if (Office.context.host === Office.HostType.Excel) {
     document.getElementById("sideload-msg").style.display = "none";
     document.getElementById("app-body").style.display = "flex";
     document.getElementById("run").onclick = run;
+    document.getElementById("enableButton").onclick = runDisabled;
+
   }
-});
+}).catch(function (error) {
+  console.log(error)
+})
+
 
 export async function run() {
   try {
@@ -69,11 +76,63 @@ export async function run() {
       const txtHostValue = txtHostInput.value;
       const txtPortValue = txtPortInput.value;
       cmdConnect(txtHostValue, txtPortValue)
+      localStorage.setItem('host', txtHost.value.trim());
+      localStorage.setItem('port', txtPort.value.trim());
+      if (txtHost.value.trim() && txtPort.value.trim()) {
 
+        Office.ribbon.requestUpdate({
+          tabs: [
+            {
+              id: "H4O.Tab",
+              groups: [
+                {
+                  id: "CommandsGroup2",
+                  controls: [
+                    {
+                      id: "TaskpaneButton2",
+                      enabled: true
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        })
+      }
       await context.sync();
     });
   } catch (error) {
     console.error(error);
   }
 }
+
+export async function runDisabled() {
+  try {
+    await Excel.run(async (context) => {
+
+      Office.ribbon.requestUpdate({
+        tabs: [
+          {
+            id: "H4O.Tab",
+            groups: [
+              {
+                id: "CommandsGroup2",
+                controls: [
+                  {
+                    id: "TaskpaneButton2",
+                    enabled: true
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      })
+      await context.sync();
+    })
+  } catch {
+
+  }
+}
+
 
