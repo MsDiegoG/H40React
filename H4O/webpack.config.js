@@ -18,7 +18,7 @@ module.exports = async (env, options) => {
     devtool: "source-map",
     entry: {
       polyfill: ["core-js/stable", "regenerator-runtime/runtime"],
-      taskpane: ["./src/taskpane/taskpane.js", "./src/taskpane/taskpane.html"],
+      taskpane: ["./src/taskpane/taskpane.js", "./src/taskpane/config.html"],
       commands: "./src/commands/commands.js",
     },
     output: {
@@ -55,13 +55,13 @@ module.exports = async (env, options) => {
     },
     plugins: [
       new HtmlWebpackPlugin({
-        filename: "taskpane.html",
-        template: "./src/taskpane/taskpane.html",
-        chunks: ["polyfill", "taskpane"],
+        filename: "config.html",
+        template: "./src/taskpane/config.html",
+        chunks: ["polyfill", "taskpane", "commands"],
       }),
       new HtmlWebpackPlugin({
-        filename: "taskpane2.html",
-        template: "./src/taskpane/taskpane2.html",
+        filename: "panel.html",
+        template: "./src/taskpane/panel.html",
         chunks: ["polyfill", "taskpane"],
       }),
       new CopyWebpackPlugin({
@@ -83,11 +83,11 @@ module.exports = async (env, options) => {
           },
         ],
       }),
-      new HtmlWebpackPlugin({
-        filename: "commands.html",
-        template: "./src/commands/commands.html",
-        chunks: ["polyfill", "commands"],
-      }),
+      // new HtmlWebpackPlugin({
+      //   filename: "commands.html",
+      //   template: "./src/commands/commands.html",
+      //   chunks: ["polyfill", "commands"],
+      // }),
     ],
     devServer: {
       headers: {
